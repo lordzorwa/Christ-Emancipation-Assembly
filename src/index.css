@@ -41,17 +41,14 @@ button, input, select, textarea { font: inherit; }
 p { margin: 0; }
 button, a { -webkit-tap-highlight-color: transparent; }
 ::selection { background: rgba(230, 57, 70, .8); color: #fff; }
-
 .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
 
-/* The hero stays lightweight while still feeling like a graded film frame.
-   Add an optional local video as described in public/media/README.md when one is available. */
+/* Hero film treatment; the fallback remains animation-only and low data. */
 main > .pt-20 > section:first-child {
   min-height: min(940px, 100svh);
   background: #071427;
   isolation: isolate;
 }
-
 main > .pt-20 > section:first-child::before,
 main > .pt-20 > section:first-child::after {
   content: '';
@@ -59,25 +56,19 @@ main > .pt-20 > section:first-child::after {
   inset: 0;
   pointer-events: none;
 }
-
 main > .pt-20 > section:first-child::before {
   z-index: 1;
   background:
     linear-gradient(90deg, rgba(3, 8, 17, .7) 0%, rgba(3, 8, 17, .19) 60%, rgba(3, 8, 17, .3) 100%),
     linear-gradient(0deg, rgba(3, 8, 17, .58), transparent 35%, rgba(3, 8, 17, .12));
 }
-
 main > .pt-20 > section:first-child::after {
   z-index: 1;
   opacity: .16;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
 }
-
-/* Foreground content sits above the film-grain/grade overlays. */
-main > .pt-20 > section:first-child > .relative {
-  z-index: 2;
-}
+main > .pt-20 > section:first-child > .relative { z-index: 2; }
 
 .btn-primary {
   display: inline-flex;
@@ -159,7 +150,6 @@ main > .pt-20 > section:first-child > .relative {
   50% { transform: translateY(-10px); }
 }
 
-/* Gentle cinematic depth on activity scenes and content cards. */
 .group.relative.overflow-hidden.rounded-\[32px\] {
   box-shadow: 0 24px 80px rgba(0,0,0,.24);
   transition: border-color .35s ease, box-shadow .35s ease;
@@ -168,16 +158,47 @@ main > .pt-20 > section:first-child > .relative {
   border-color: rgba(245,223,167,.3);
   box-shadow: 0 28px 90px rgba(0,0,0,.38), 0 0 50px rgba(11,42,143,.12);
 }
-
 input, textarea, select { accent-color: var(--cea-red); }
-:focus-visible {
-  outline: 2px solid var(--cea-gold);
-  outline-offset: 3px;
+:focus-visible { outline: 2px solid var(--cea-gold); outline-offset: 3px; }
+
+/* Phone and small-tablet layout: compact header, stack the hero, keep controls tappable. */
+@media (max-width: 767px) {
+  html { scroll-padding-top: 5rem; }
+  header > .mx-auto { min-height: 64px; }
+  header > .mx-auto > a:first-child { min-width: 0; gap: .55rem; }
+  header > .mx-auto > a:first-child img { width: 42px; height: 42px; flex: 0 0 42px; object-fit: contain; }
+  header > .mx-auto > a:first-child p:first-child { font-size: 1.2rem; line-height: 1; }
+  header > .mx-auto > a:first-child p:last-child { max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 8px; letter-spacing: .15em; }
+  header > .mx-auto > button { flex: 0 0 44px; }
+  main > .pt-20 > section:first-child { min-height: 100svh; min-height: 100vh; }
+  main > .pt-20 > section:first-child > .relative {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    gap: 1.25rem;
+    padding-top: 5.5rem;
+    padding-bottom: 3rem;
+  }
+  main > .pt-20 > section:first-child > .relative > div:first-child { order: 2; }
+  main > .pt-20 > section:first-child > .relative > div:last-child { order: 1; margin: 0 auto; max-width: 220px; }
+  main > .pt-20 > section:first-child h1 { font-size: clamp(2.8rem, 11vw, 4.2rem); line-height: .9; letter-spacing: -.025em; }
+  main > .pt-20 > section:first-child > .relative > div:first-child > div:first-child { margin-bottom: 1rem; padding: .45rem .7rem; }
+  main > .pt-20 > section:first-child > .relative > div:first-child > div:first-child img { width: 38px; height: 38px; }
+  main > .pt-20 > section:first-child > .relative > div:first-child > div:first-child span { font-size: 9px; letter-spacing: .16em; }
+  main > .pt-20 > section:first-child .mt-8 { gap: .7rem; }
+  main > .pt-20 > section:first-child .mt-8 a { min-height: 48px; }
+  .hero-logo-container { animation-duration: 10s; }
+  .group.relative.overflow-hidden.rounded-\[32px\] { min-height: 400px; }
+  .group.relative.overflow-hidden.rounded-\[32px\] > div:last-child { min-height: 400px; }
+  input, select, textarea { font-size: 16px; }
+  iframe { max-width: 100%; }
 }
 
-@media (max-width: 640px) {
-  .btn-primary, .btn-secondary { width: 100%; }
-  main > .pt-20 > section:first-child { min-height: 100svh; }
+@media (max-width: 380px) {
+  header > .mx-auto { padding-left: .75rem; padding-right: .75rem; }
+  header > .mx-auto > a:first-child p:last-child { max-width: 145px; }
+  main > .pt-20 > section:first-child > .relative > div:last-child { max-width: 178px; }
+  main > .pt-20 > section:first-child h1 { font-size: clamp(2.55rem, 12vw, 3.2rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {

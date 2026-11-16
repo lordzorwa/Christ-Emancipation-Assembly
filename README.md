@@ -15,30 +15,25 @@ Open <http://localhost:3000>. Create a production build with `npm run build`; Vi
 
 ## Deploy to Vercel
 
-1. Push this repository to GitHub (already connected if you are reading this there).
-2. In Vercel, choose **Add New → Project**, import `lordzorwa/Christ-Emancipation-Assembly`, and authorize GitHub if prompted.
-3. Keep the detected Vite settings: build command `npm run build`, output directory `dist`, install command `npm install`.
-4. Select **Deploy**. Future pushes to `main` deploy automatically.
-
-The included `vercel.json` sends app routes to the Vite SPA so links such as `/bible-reader` work on direct visits and refreshes.
+Import `lordzorwa/Christ-Emancipation-Assembly` in Vercel. Use build command `npm run build` and output directory `dist`. The included `vercel.json` sends app routes to the Vite SPA so direct visits and refreshes work. Future pushes to `main` deploy automatically after project setup.
 
 ## Deploy to Netlify
 
-1. In Netlify, choose **Add new site → Import an existing project** and select this GitHub repository.
-2. Set build command to `npm run build` and publish directory to `dist` (also defined in `netlify.toml`).
-3. Select **Deploy site**. Netlify will rebuild after each push.
+Import this GitHub repository in Netlify. Use build command `npm run build` and publish directory `dist` (also defined in `netlify.toml`). The included redirect config supports client-side routes.
 
-The included `netlify.toml` provides the SPA fallback for client-side routes.
+## Church logo asset
 
-## Cinematic hero video
+Upload the exact original artwork, unchanged, to `public/cea-logo.png`. The navbar, hero, footer, favicon, and social preview reference this image. See [`public/LOGO-ASSET.md`](public/LOGO-ASSET.md). Chat image attachments do not automatically become repository files, so confirm the file exists in `public/` before deployment.
 
-No original or licensed church footage was included with the supplied assets, so the hero currently uses a lightweight animated gradient, light, and particle treatment rather than embedding an unlicensed stock video. To add video later, see [`public/media/README.md`](public/media/README.md). Keep a compressed, muted, loopable MP4/WebM short (ideally 5–12 MB or less) and a poster image so mobile visitors can use the fallback without downloading the video.
+## Mobile layout
 
-## Church content to confirm before launch
+The site includes a compact sticky header and menu, stacked logo-first hero, responsive cards and forms, touch-sized controls, and safe small-screen layouts. Preview at a mobile viewport such as 390 × 844 in browser developer tools.
 
-- Replace the sample Gwarinpa address and map query with the church's verified address.
-- Update weekly service times in `src/App.jsx` (`weeklyActivities` and `sermonSchedule`).
+## Before launch
+
+- Verify the church address and map location: 27B Uyo Street, Rumuomasi, Port Harcourt, Rivers State, Nigeria.
+- Confirm weekly service times in `src/App.jsx` (`weeklyActivities` and `sermonSchedule`).
 - Set the actual YouTube Live embed/channel URL and live status; the current stream URL is a placeholder.
-- The Bible API currently provides reliable KJV/WEB coverage. Other translation options may require an API key/license and may not be available at the public endpoint.
-- The contact form is a front-end demonstration. Connect a form service (for example Netlify Forms, Formspree, or a church-owned backend) before relying on it to receive messages.
-- The supplied logo image was not present as a repository file; `public/logo.svg` is an illustrative vector placeholder. Replace it with the original high-resolution logo before publishing if available.
+- The Bible API may not serve all listed translations; some require separate API credentials and licensing.
+- Connect the contact form to a service or backend so messages are actually delivered.
+- Add church-owned/licensed video footage only; see `public/media/README.md`. The animated gradient fallback remains lightweight for mobile data.

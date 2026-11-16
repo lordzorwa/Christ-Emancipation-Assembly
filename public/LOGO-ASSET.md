@@ -1,7 +1,5 @@
 # Original CEA logo asset
 
-The site must use the church's original logo image as supplied, without redrawing, tracing, recoloring, cropping, or otherwise redesigning it.
+The site displays the church-provided original logo directly from `/cea-logo.png`; it is not redrawn, traced, recolored, cropped, or otherwise redesigned. The navbar, hero, and footer all use this exact image. The favicon and social preview metadata point to this same original file.
 
-Add the original image file to this directory as `cea-logo.png`. The existing `/logo.svg` is only a compatibility wrapper around that image, so the navbar, hero, footer, and favicon all use the same untouched source artwork. If the original is JPEG or WebP, either preserve its original extension and update the `<image href>` in `logo.svg`, or export a PNG without altering the artwork.
-
-The original image attached to the chat is not currently present as a file in the GitHub repository, so it must be uploaded/committed at `public/cea-logo.png` for the logo to display. Do not substitute the illustrative logo or create another version.
+The image attachment shared in chat is not automatically stored in the repository. Add the exact original image file to `public/cea-logo.png` (keep the full image and its white background intact). No edits to the artwork are needed. After it is committed, Vercel and Netlify will serve it at `/cea-logo.png`.
