@@ -131,15 +131,14 @@ const navLinks = [
 ];
 
 const footerLinks = navLinks;
-
 const easeOut = [0.22, 1, 0.36, 1];
 
 function LogoMark({ large = false }) {
   return (
     <img
-      src="/logo.svg"
+      src="/cea-logo.png"
       alt="Christ Emancipation Assembly logo"
-      className={large ? 'h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24' : 'h-10 w-10 sm:h-12 sm:w-12'}
+      className={large ? 'h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain' : 'h-10 w-10 sm:h-12 sm:w-12 object-contain'}
     />
   );
 }
@@ -402,7 +401,7 @@ function HomePage() {
 
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, ease: easeOut }} className="relative z-10 mx-auto flex w-full max-w-md items-center justify-center">
             <div className="hero-logo-container">
-              <img src="/logo.svg" alt="Christ Emancipation Assembly logo" className="w-full max-w-md drop-shadow-[0_20px_60px_rgba(11,42,143,0.58)]" />
+              <img src="/cea-logo.png" alt="Christ Emancipation Assembly logo" className="w-full max-w-md drop-shadow-[0_20px_60px_rgba(11,42,143,0.58)] object-contain" />
             </div>
           </motion.div>
         </div>
@@ -893,12 +892,12 @@ function ContactPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Address</p>
             <div className="mt-4 flex items-start gap-3 text-slate-200">
               <MapPin className="mt-1 h-5 w-5 text-gold" />
-              <p className="leading-7">Christ Emancipation Assembly, Freedom Avenue, Gwarinpa, Abuja, Nigeria.</p>
+              <p className="leading-7">27B Uyo Street, Rumuomasi, Port Harcourt, Rivers State, Nigeria.</p>
             </div>
             <div className="mt-5 overflow-hidden rounded-2xl border border-white/10">
               <iframe
                 title="Church map"
-                src="https://www.google.com/maps?q=Gwarinpa%20Abuja%20Nigeria&output=embed"
+                src="https://www.google.com/maps?q=27B%20Uyo%20Street%2C%20Rumuomasi%2C%20Port%20Harcourt%2C%20Rivers%20State%2C%20Nigeria&output=embed"
                 className="h-52 w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
